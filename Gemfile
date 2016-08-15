@@ -30,6 +30,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'capybara-webkit'
   gem 'pry', :require => 'pry'
+  gem 'simplecov'
 end
 
 group :development do
