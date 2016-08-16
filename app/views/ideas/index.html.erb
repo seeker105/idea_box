@@ -1,8 +1,9 @@
 <div class="container">
 <% @ideas.each do |idea| %>
 <div class="row">
-  <%= idea.title %>
-  <%= idea.body %>
+  Title: <%= idea.title %>,
+  Body: <%= idea.body %>,
+  Quality: <%= idea.quality %><br /><br />
 </div>
 <% end %>
   <div class="row">
