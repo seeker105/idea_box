@@ -14,5 +14,8 @@ RSpec.feature "View with Ideas" do
       expect(page).to have_content(idea.title)
       expect(page).to have_content(idea.body)
     end
+    expect(page).to have_field("Title")
+    expect(page).to have_field("Body")
+    expect(page).to have_button("Create Idea")
   end
 end
