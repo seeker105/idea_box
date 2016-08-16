@@ -9,18 +9,6 @@
         1,
         null
       ],
-      "/Users/christopher1/a-projects/idea_box/app/controllers/ideas_controller.rb": [
-        1,
-        1,
-        2,
-        null,
-        null
-      ],
-      "/Users/christopher1/a-projects/idea_box/app/controllers/application_controller.rb": [
-        1,
-        1,
-        null
-      ],
       "/Users/christopher1/a-projects/idea_box/app/models/idea.rb": [
         1,
         null,
@@ -43,6 +31,18 @@
         0,
         0
       ],
+      "/Users/christopher1/a-projects/idea_box/app/controllers/application_controller.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/christopher1/a-projects/idea_box/app/controllers/ideas_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "/Users/christopher1/a-projects/idea_box/app/jobs/application_job.rb": [
         0,
         0
@@ -54,6 +54,6 @@
         0
       ]
     },
-    "timestamp": 1471306426
+    "timestamp": 1471308786
   }
 }
