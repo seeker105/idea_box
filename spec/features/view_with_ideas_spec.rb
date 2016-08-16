@@ -8,7 +8,8 @@ RSpec.feature "View with Ideas" do
     sleep 1
     ideas << create(:idea)
 
-    byebug
+    visit root_path
+
     ideas.each do |idea|
       expect(page).to have_content(idea.title)
       expect(page).to have_content(idea.body)

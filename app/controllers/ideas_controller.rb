@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
   def index
-    @idea = Idea.new
+    @ideas = Idea.order(:created_at)
   end
 end

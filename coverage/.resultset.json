@@ -19,6 +19,18 @@
         1,
         null
       ],
+      "/Users/christopher1/a-projects/idea_box/app/controllers/ideas_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/christopher1/a-projects/idea_box/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/christopher1/a-projects/idea_box/app/channels/application_cable/channel.rb": [
         0,
         0,
@@ -26,18 +38,6 @@
         0
       ],
       "/Users/christopher1/a-projects/idea_box/app/channels/application_cable/connection.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/christopher1/a-projects/idea_box/app/controllers/application_controller.rb": [
-        0,
-        0,
-        0
-      ],
-      "/Users/christopher1/a-projects/idea_box/app/controllers/ideas_controller.rb": [
-        0,
         0,
         0,
         0,
@@ -54,6 +54,6 @@
         0
       ]
     },
-    "timestamp": 1471308786
+    "timestamp": 1471311789
   }
 }
