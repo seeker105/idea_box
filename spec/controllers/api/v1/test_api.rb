@@ -20,4 +20,20 @@ RSpec.describe Api::V1::IdeasController, type: :controller do
       end
     end
   end
+
+  describe "POST create" do
+    it "accepts a title and body and adds to the DB with a quality=swill" do
+      test_title = "Test_title"
+      test_body = "Test_body"
+
+      expect(Idea.count).to eq(0)
+
+      post :create, params: { idea: {title: test_title, body: test_body}, format: :json}
+
+      expect(Idea.count).to eq(1)
+      expect(Idea.last.title).to eq(test_title)
+      expect(Idea.last.body).to eq(test_body)
+      expect(Idea.last.quality).to eq("Swill")
+    end
+  end
 end
