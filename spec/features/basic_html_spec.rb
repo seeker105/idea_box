@@ -6,7 +6,6 @@ RSpec.feature "Display the basic html" do
 
     expect(page).to have_field("Title")
     expect(page).to have_field("Body")
-    save_and_open_page
     expect(page).to have_button("Create Idea")
   end
 end
