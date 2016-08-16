@@ -1,9 +1,6 @@
-class Api::V1::IdeasController
+class Api::V1::IdeasController < ApplicationController
 
   def index
-    byebug
-    byebug
-    # respond_with @ideas
-    @ideas = Ideas.order(:created_at)
+    @ideas = Idea.order(created_at: :desc)
   end
 end

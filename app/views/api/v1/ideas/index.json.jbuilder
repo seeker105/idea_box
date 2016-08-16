@@ -1,1 +1,1 @@
-json.array! @ideas, partial: 'ideas/idea', as: :idea
+json.array! @ideas, partial: 'api/v1/ideas/idea', as: :idea
