@@ -3,7 +3,12 @@ $(document).ready(function(){
   fetchIdeas();
 
   $(":button[name=submit]").on('click', submitIdea);
-  $(":button[name=delete]").on('click', delete);
+  $("#ideasDiv").on('click', ".delete-button", startDelete);
+
+  // $(":button[name=delete]").forEach(function(buttonElement){
+  //   buttonElement.on('click', startDelete)
+  // });
+  // document.getElementsByName('delete').addEventListener('click', function(event){})
 });
 
 
@@ -41,12 +46,10 @@ function renderIdeas(ideaData){
   ideasDiv = $("#ideasDiv");
   ideasDiv.html(""),
   ideaData.forEach(function(idea){
-    ideasDiv.append('<div class="row idea-' + idea.id + '">' + '<input type="button" name="delete" id="' + idea.id + '"value="Delete" class="btn btn-default pull-right">'+ 'Title: ' + idea.title + ' Body: ' + idea.body + ' Quality: ' + idea.quality + '</div><br />');
+    ideasDiv.append('<div class="row idea-' + idea.id + '">' + '<input type="button" name="delete" id="' + idea.id + '"value="Delete" class="btn btn-default pull-right delete-button">'+ 'Title: ' + idea.title + ' Body: ' + idea.body + ' Quality: ' + idea.quality + '</div><br />');
   });
 };
 
-function delete(){
-  debugger;
+function startDelete(){
+  this.id
 };
-
-function deleteIdea(){};
