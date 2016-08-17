@@ -1,20 +1,26 @@
 
 $(document).ready(function(){
 
-  $(":button[name=submit]").on('click', function(){
-    console.log("button was clicked");
-    var ideaTitle = $('#title').val();
-    var ideaBody = $('#body').val();
-    ideaData = { idea: {title: ideaTitle, body: ideaBody} }
-    debugger;
-    $.ajax({
-      method: "POST",
-      url: "/api/v1/ideas",
-      dataType: "JSON",
-      error: function(errorResponse){
-        console.log("Error")
-      }
-    })
-  })
+  $(":button[name=submit]").on('click', submitIdea);
+
+
+
+
 
 });
+
+
+
+function submitIdea(){
+  console.log("submitIdea is invoked");
+  var ideaTitle = $('#title').val();
+  var ideaBody = $('#body').val();
+  var ideaData = { idea: {title: ideaTitle, body: ideaBody}};
+  $.ajax({
+    method: "POST",
+    url: "/api/v1/ideas/",
+    dataType: "JSON",
+    data: ideaData,
+    success: fetchIdeas
+  })
+}
