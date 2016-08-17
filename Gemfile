@@ -31,6 +31,8 @@ group :development, :test do
   gem 'capybara-webkit'
   gem 'pry', :require => 'pry'
   gem 'simplecov'
+  gem 'teaspoon'
+  gem 'teaspoon-mocha'
 end
 
 group :development do
