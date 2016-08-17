@@ -3,7 +3,7 @@ $(document).ready(function(){
   fetchIdeas();
 
   $(":button[name=submit]").on('click', submitIdea);
-  $(":button[name=delete]").on('click', deleteIdea);
+  $("#ideasDiv").on('click', ".delete-button", startDelete);
 });
 
 
@@ -41,6 +41,15 @@ function renderIdeas(ideaData){
   ideasDiv = $("#ideasDiv");
   ideasDiv.html(""),
   ideaData.forEach(function(idea){
-    ideasDiv.append('<div class="row idea-' + idea.id + '">' + '<input type="button" name="delete" id="' + idea.id + '"value="Delete" class="btn btn-default pull-right">'+ 'Title: ' + idea.title + ' Body: ' + idea.body + ' Quality: ' + idea.quality + '</div><br />');
+    ideasDiv.append('<div class="row idea-' + idea.id + '">' + '<input type="button" name="delete" id="' + idea.id + '"value="Delete" class="btn btn-default pull-right delete-button">'+ 'Title: ' + idea.title + ' Body: ' + idea.body + ' Quality: ' + idea.quality + '</div><br />');
   });
+};
+
+function startDelete(){
+  $.ajax({
+    method: "DELETE",
+    url: "/api/v1/ideas/" + this.id,
+    dataType: "text",
+    success: fetchIdeas
+  })
 };

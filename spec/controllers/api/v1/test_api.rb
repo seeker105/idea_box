@@ -41,4 +41,17 @@ RSpec.describe Api::V1::IdeasController, type: :controller do
       expect(Idea.last.quality).to eq("Swill")
     end
   end
+
+  describe "DELETE" do
+    it 'accepts a database id number and deletes that record from the database' do
+
+      expect(Idea.count).to eq(0)
+      idea = create(:idea)
+      expect(Idea.count).to eq(1)
+
+      delete :destroy, params: {id: idea.id, format: :json}
+
+      expect(Idea.count).to eq(0)
+    end
+  end
 end
