@@ -5,7 +5,7 @@ class Api::V1::IdeasController < ApplicationController
   end
 
   def create
-    Idea.create(idea_params)
+    @idea = Idea.create(idea_params)
   end
 
   private
