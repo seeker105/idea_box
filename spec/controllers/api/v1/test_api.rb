@@ -28,7 +28,12 @@ RSpec.describe Api::V1::IdeasController, type: :controller do
 
       expect(Idea.count).to eq(0)
 
-      post :create, params: { idea: {title: test_title, body: test_body}, format: :json}
+      response = post :create, params: { idea: {title: test_title, body: test_body}, format: :json}
+      result = JSON.parse(response.body, symbolize_names: true)
+
+      expect(result[:title]).to eq(test_title)
+      expect(result[:body]).to eq(test_body)
+      expect(result[:quality]).to eq("Swill")
 
       expect(Idea.count).to eq(1)
       expect(Idea.last.title).to eq(test_title)

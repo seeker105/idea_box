@@ -5,8 +5,7 @@ class Api::V1::IdeasController < ApplicationController
   end
 
   def create
-    Idea.create(idea_params)
-    redirect_to root_path
+    @idea = Idea.create(idea_params)
   end
 
   private
