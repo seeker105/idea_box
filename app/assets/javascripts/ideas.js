@@ -3,7 +3,7 @@ $(document).ready(function(){
   fetchIdeas();
 
   $(":button[name=submit]").on('click', submitIdea);
-  $(":button[name=delete]").on('click', deleteIdea);
+  $(":button[name=delete]").on('click', delete);
 });
 
 
@@ -44,3 +44,9 @@ function renderIdeas(ideaData){
     ideasDiv.append('<div class="row idea-' + idea.id + '">' + '<input type="button" name="delete" id="' + idea.id + '"value="Delete" class="btn btn-default pull-right">'+ 'Title: ' + idea.title + ' Body: ' + idea.body + ' Quality: ' + idea.quality + '</div><br />');
   });
 };
+
+function delete(){
+  debugger;
+};
+
+function deleteIdea(){};
