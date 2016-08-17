@@ -4,11 +4,6 @@ $(document).ready(function(){
 
   $(":button[name=submit]").on('click', submitIdea);
   $("#ideasDiv").on('click', ".delete-button", startDelete);
-
-  // $(":button[name=delete]").forEach(function(buttonElement){
-  //   buttonElement.on('click', startDelete)
-  // });
-  // document.getElementsByName('delete').addEventListener('click', function(event){})
 });
 
 
@@ -51,5 +46,10 @@ function renderIdeas(ideaData){
 };
 
 function startDelete(){
-  this.id
+  $.ajax({
+    method: "DELETE",
+    url: "/api/v1/ideas/" + this.id,
+    dataType: "text",
+    success: fetchIdeas
+  })
 };
