@@ -13,6 +13,5 @@ describe('submitIdea', function() {
       document.body.appendChild(bodyElement);
 
       submitIdea();
-
   });
 });
