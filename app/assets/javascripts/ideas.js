@@ -61,6 +61,12 @@ function startDelete(){
 };
 
 function incrementQuality(){
+  $.ajax({
+    method: "POST",
+    url: "/api/v1/increment/" + this.parentElement.id,
+    dataType: "text",
+    success: fetchIdeas
+  })
 };
 
 function decrementQuality(){
