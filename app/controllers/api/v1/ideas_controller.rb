@@ -22,8 +22,19 @@ class Api::V1::IdeasController < ApplicationController
     idea.decrement
   end
 
+  def update
+    idea = Idea.find(params[:id])
+    idea.update_attribute(update_params[:attribute], update_params[:value])
+  end
+
   private
   def idea_params
     params.require(:idea).permit(:title, :body)
   end
+
+  def update_params
+    params.require(:idea).permit(:attribute, :value)
+  end
+
+
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :ideas, only: [:index, :create, :destroy]
       post 'increment/:id', to: 'ideas#increment'
       post 'decrement/:id', to: 'ideas#decrement'
+      post 'update/:id', to: 'ideas#update'
     end
   end
 end
