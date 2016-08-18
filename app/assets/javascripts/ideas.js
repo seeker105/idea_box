@@ -8,6 +8,12 @@ $(document).ready(function(){
   $("#ideasDiv").on('click', ".thumbs-up-button", incrementQuality);
   $("#ideasDiv").on('click', ".thumbs-down-button", decrementQuality);
 
+  $("#ideasDiv").on('focusout', ".searchableTitle", changeTitle);
+  $("#ideasDiv").on('keydown', ".searchableTitle", catchCarriageReturn);
+  
+  $("#ideasDiv").on('focusout', ".searchableBody", changeTitle);
+  $("#ideasDiv").on('keydown', ".searchableBody", catchCarriageReturn);
+
 });
 
 
@@ -98,4 +104,28 @@ function runSearch(){
 
 function unHideRows(){
   $('.row').removeClass("hidden")
+};
+
+function changeTitle(){
+  console.log("changeTitle fired");
+  if (this.classList[0] === "searchableTitle") {
+    attributeToChange = "title";
+  } else if (this.classList[0] === "searchableBody") {
+    attributeToChange = "body";
+  }
+  $.ajax({
+    method: "POST",
+    url: "/api/v1/update/" + this.parentElement.id,
+    dataType: "JSON",
+    data: {idea: {attribute: attributeToChange, value: this.innerText}},
+    success: fetchIdeas
+  })
+
+};
+
+function catchCarriageReturn(e){
+  if (e.key === "Enter") {
+    e.preventDefault();
+    $(this).blur();
+  }
 };
