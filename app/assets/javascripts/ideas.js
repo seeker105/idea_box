@@ -10,7 +10,7 @@ $(document).ready(function(){
 
   $("#ideasDiv").on('focusout', ".searchableTitle", changeTitle);
   $("#ideasDiv").on('keydown', ".searchableTitle", catchCarriageReturn);
-  
+
   $("#ideasDiv").on('focusout', ".searchableBody", changeTitle);
   $("#ideasDiv").on('keydown', ".searchableBody", catchCarriageReturn);
 
@@ -19,7 +19,6 @@ $(document).ready(function(){
 
 
 function submitIdea(){
-  console.log("submitIdea is invoked");
   var ideaTitle = $('#title').val();
   var ideaBody = $('#body').val();
   clearInputFields();
@@ -107,7 +106,6 @@ function unHideRows(){
 };
 
 function changeTitle(){
-  console.log("changeTitle fired");
   if (this.classList[0] === "searchableTitle") {
     attributeToChange = "title";
   } else if (this.classList[0] === "searchableBody") {
