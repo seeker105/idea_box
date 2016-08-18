@@ -41,14 +41,14 @@ function renderIdeas(ideaData){
   ideasDiv = $("#ideasDiv");
   ideasDiv.html(""),
   ideaData.forEach(function(idea){
-    ideasDiv.append('<div class="row idea-' + idea.id + '">' + '<input type="button" name="delete" id="' + idea.id + '"value="Delete" class="btn btn-default pull-right delete-button">'+ 'Title: ' + idea.title + ' Body: ' + idea.body + ' Quality: ' + idea.quality + '</div><br />');
+    ideasDiv.append('<div class="row" id="' + idea.id + '">' + '<input type="button" name="delete" value="Delete" class="btn btn-default pull-right delete-button"> <input type="button" name="delete" id="' + idea.id + '"value="Delete" class="btn btn-default pull-right delete-button">'  + 'Title: ' + idea.title + ' Body: ' + idea.body + ' Quality: ' + idea.quality + '</div><br />');
   });
 };
 
 function startDelete(){
   $.ajax({
     method: "DELETE",
-    url: "/api/v1/ideas/" + this.id,
+    url: "/api/v1/ideas/" + this.parentElement.id,
     dataType: "text",
     success: fetchIdeas
   })
