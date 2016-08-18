@@ -2,10 +2,12 @@
 $(document).ready(function(){
   fetchIdeas();
 
+  $('.search').on('input', runSearch)
   $(":button[name=submit]").on('click', submitIdea);
   $("#ideasDiv").on('click', ".delete-button", startDelete);
   $("#ideasDiv").on('click', ".thumbs-up-button", incrementQuality);
   $("#ideasDiv").on('click', ".thumbs-down-button", decrementQuality);
+
 });
 
 
@@ -47,7 +49,8 @@ function renderIdeas(ideaData){
 <input type="button" name="delete" value="Delete" class="btn btn-default pull-right delete-button"> \
 <input type="button" name="thumbs-up-button" value="Thumbs Up" class="btn btn-default pull-right thumbs-up-button"> \
 <input type="button" name="thumbs-down-button" value="Thumbs Down" class="btn btn-default pull-right thumbs-down-button"> \
-Title: ' + idea.title + ' Body: ' + idea.body + ' Quality: ' + idea.quality + '</div><br />');
+Title: <span class="searchableTitle" contenteditable="true">' + idea.title + '</span> \
+Body: <span class="searchableBody" contenteditable="true">' + idea.body + '</span> Quality: ' + idea.quality + '</div><br />');
   });
 };
 
@@ -76,4 +79,23 @@ function decrementQuality(){
     dataType: "text",
     success: fetchIdeas
   })
+};
+
+function runSearch(){
+  unHideRows();
+  searchText = $('.search').val();
+  var titleArray = $('.searchableTitle');
+  var bodyArray = $('.searchableBody');
+  for (var x=0; x < titleArray.length; x++){
+    // debugger;
+    var title = titleArray[x].innerText;
+    var body = bodyArray[x].innerText;
+    if (!( title.includes(searchText) || body.includes(searchText) )) {
+      $(titleArray[x].parentElement).addClass("hidden");
+    };
+  };
+};
+
+function unHideRows(){
+  $('.row').removeClass("hidden")
 };
