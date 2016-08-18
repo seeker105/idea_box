@@ -70,5 +70,10 @@ function incrementQuality(){
 };
 
 function decrementQuality(){
-  debugger;
+  $.ajax({
+    method: "POST",
+    url: "/api/v1/decrement/" + this.parentElement.id,
+    dataType: "text",
+    success: fetchIdeas
+  })
 };
