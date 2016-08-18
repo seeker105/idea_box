@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :ideas, only: [:index, :create, :destroy]
       post 'increment', to: 'ideas#increment'
+      post 'decrement', to: 'ideas#decrement'
     end
   end
 end

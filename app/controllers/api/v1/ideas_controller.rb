@@ -17,6 +17,11 @@ class Api::V1::IdeasController < ApplicationController
     idea.increment
   end
 
+  def decrement
+    idea = Idea.find(params[:id])
+    idea.decrement
+  end
+
   private
   def idea_params
     params.require(:idea).permit(:title, :body)

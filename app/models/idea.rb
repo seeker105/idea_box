@@ -10,4 +10,11 @@ class Idea < ApplicationRecord
     end
   end
 
+  def decrement
+    if quality == "Genius"
+      update_attribute('quality', 'Plausible')
+    elsif quality == "Plausible"
+      update_attribute('quality', 'Swill')
+    end
+  end
 end

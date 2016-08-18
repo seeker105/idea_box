@@ -91,4 +91,41 @@ RSpec.describe Api::V1::IdeasController, type: :controller do
       expect(Idea.last.quality).to eq("Genius")
     end
   end
+
+  describe "Decrement quality" do
+    it 'accepts a database id and decrements the quality from Genius to Plausible' do
+      idea = create(:idea, quality: "Genius")
+      expect(idea.quality).to eq("Genius")
+
+      post :decrement, params: {id: idea.id, format: :json}
+      expect(Idea.last.id).to eq(idea.id)
+      expect(Idea.last.quality).to eq("Plausible")
+    end
+
+    it 'accepts a database id and decrements the quality from Genius to Swill' do
+      idea = create(:idea, quality: "Genius")
+      expect(idea.quality).to eq("Genius")
+
+      post :decrement, params: {id: idea.id, format: :json}
+
+      post :decrement, params: {id: idea.id, format: :json}
+      expect(Idea.last.id).to eq(idea.id)
+      expect(Idea.last.quality).to eq("Swill")
+    end
+
+    it 'accepts a database id does not change when quality is Genius' do
+      idea = create(:idea, quality: "Genius")
+      expect(idea.quality).to eq("Genius")
+
+      post :decrement, params: {id: idea.id, format: :json}
+
+      post :decrement, params: {id: idea.id, format: :json}
+      expect(Idea.last.id).to eq(idea.id)
+      expect(Idea.last.quality).to eq("Swill")
+
+      post :decrement, params: {id: idea.id, format: :json}
+      expect(Idea.last.id).to eq(idea.id)
+      expect(Idea.last.quality).to eq("Swill")
+    end
+  end
 end
