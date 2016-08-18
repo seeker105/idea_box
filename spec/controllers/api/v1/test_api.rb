@@ -54,4 +54,41 @@ RSpec.describe Api::V1::IdeasController, type: :controller do
       expect(Idea.count).to eq(0)
     end
   end
+
+  describe "Increment quality" do
+    it 'accepts a database id and increments the quality from swill to Plausible' do
+      idea = create(:idea)
+      expect(idea.quality).to eq("Swill")
+
+      post :increment, params: {id: idea.id, format: :json}
+      expect(Idea.last.id).to eq(idea.id)
+      expect(Idea.last.quality).to eq("Plausible")
+    end
+
+    it 'accepts a database id and increments the quality from Plausible to Genius' do
+      idea = create(:idea)
+      expect(idea.quality).to eq("Swill")
+
+      post :increment, params: {id: idea.id, format: :json}
+
+      post :increment, params: {id: idea.id, format: :json}
+      expect(Idea.last.id).to eq(idea.id)
+      expect(Idea.last.quality).to eq("Genius")
+    end
+
+    it 'accepts a database id does not change when quality is Genius' do
+      idea = create(:idea)
+      expect(idea.quality).to eq("Swill")
+
+      post :increment, params: {id: idea.id, format: :json}
+
+      post :increment, params: {id: idea.id, format: :json}
+      expect(Idea.last.id).to eq(idea.id)
+      expect(Idea.last.quality).to eq("Genius")
+
+      post :increment, params: {id: idea.id, format: :json}
+      expect(Idea.last.id).to eq(idea.id)
+      expect(Idea.last.quality).to eq("Genius")
+    end
+  end
 end
